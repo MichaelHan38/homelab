@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-app-server
+spec:
+  selector:
+    app.kubernetes.io/name: test-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-app
+  labels:
+    app: test-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-app
+  template:
+    metadata:
+      labels:
+        app: test-app
+    spec:
+      containers:
+      - name: test-app
+        image: michaelhan38/homelab:linux-amd64-0.0.1
+        ports:
+        - containerPort: 8080
