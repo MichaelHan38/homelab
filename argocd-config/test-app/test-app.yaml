@@ -28,6 +28,6 @@ spec:
     spec:
       containers:
       - name: test-app
-        image: michaelhan38/homelab:linux-amd64-0.0.1
+        image: michaelhan38/homelab:linux-amd64-0.0.2
         ports:
         - containerPort: 8080
